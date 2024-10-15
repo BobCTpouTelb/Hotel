@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,13 @@ namespace Hotel
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Представляет контекст данных для взаимодействия с базой данных.
+        /// </summary>
+        public static HotelEntities context = new HotelEntities();
+        /// <summary>
+        /// Представляет поле для хранения пользователя вошедшего в систему.
+        /// </summary>
+        public static User currentUser;
     }
 }
