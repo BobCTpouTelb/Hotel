@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Hotel.Model;
 
 namespace Hotel.View.Windows
 {
@@ -20,6 +21,7 @@ namespace Hotel.View.Windows
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        int loginAttemptCount = 0;
         public AuthorizationWindow()
         {
             InitializeComponent();
@@ -68,7 +70,18 @@ namespace Hotel.View.Windows
 
             if (App.currentUser == null)
             {
-                Feedback.Error("Вы ввели неверный логин или пароль. Пожалуйста проверьте ещё раз введенные данные");
+                loginAttemptCount++;
+
+                Feedback.Error($"Вы ввели неверный логин или пароль. Пожалуйста проверьте ещё раз введенные данные. Попытка: {loginAttemptCount} из 3");
+
+                if (loginAttemptCount == 3)
+                {
+                    // App.currentUser.IsBlocked = true;
+                    // App.context.SaveChanges();
+                    loginAttemptCount = 0;
+                    Feedback.Error("Вы заблокированы. Обратитесь к администратору.");
+                    Close();
+                }
             }
             else if (App.currentUser.IsBlocked == true)
             {
@@ -88,8 +101,14 @@ namespace Hotel.View.Windows
                 {
                     case 1:
                         AdministratorWindow administratorWindow = new AdministratorWindow();
+                        administratorWindow.Show();
                         break;
                     case 2:
+                        UserWindow userWindow = new UserWindow();
+                        userWindow.Show();
+                        break;
+                    default:
+                        Feedback.Error("Роль пользователя не найдена. Доступ запрещен");
                         break;
                 }
 
@@ -103,11 +122,12 @@ namespace Hotel.View.Windows
         {
             foreach (var user in App.context.User)
             {
-                if (user.RegistrationDate.AddMonths(1) < DateTime.Now)
+                if (user.RegistrationDate.AddMonths(1) < DateTime.Now && !user.IsActivated)
                 {
                     user.IsBlocked = true;
                 }
             }
+            App.context.SaveChanges();
         }
     }
 }
