@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel.View.Windows"
         mc:Ignorable="d"
-        Title="Окно администратора" MinHeight="300" MinWidth="400">
-    <Grid>
-        
+        Title="Окно администратора" MinHeight="300" MinWidth="400" WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Name="userBtn" Content="Пользователи" Click="userBtn_Click"/>
+            <Separator Width="20" Height="0"/>
+            <Button Name="roomsBTN" Content="Комнаты" Click="roomsBTN_Click"/>
+        </StackPanel>
+
+        <Frame Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
