@@ -90,8 +90,7 @@ namespace Hotel.View.Windows
             else if (App.currentUser.IsActivated == false)
             {
                 ChagePasswordWindow chagePasswordWindow = new ChagePasswordWindow();
-                chagePasswordWindow.Show();
-                Hide();
+                chagePasswordWindow.ShowDialog();
             }
             else
             {

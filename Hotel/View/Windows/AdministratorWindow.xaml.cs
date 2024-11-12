@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Hotel.View.Pages;
 
 namespace Hotel.View.Windows
 {
@@ -22,16 +23,20 @@ namespace Hotel.View.Windows
         public AdministratorWindow()
         {
             InitializeComponent();
+            // Открытие страницы пользователей по умолчанию
+            MainFrame.Navigate(new UsersPage());
         }
 
         private void userBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            // Открытие страницы пользователей
+            MainFrame.Navigate(new UsersPage());
         }
 
         private void roomsBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            // Открытие страницы номеров
+            MainFrame.Navigate(new RoomsPage());
         }
     }
 }

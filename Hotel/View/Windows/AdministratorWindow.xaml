@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel.View.Windows"
         mc:Ignorable="d"
-        Title="Окно администратора" MinHeight="300" MinWidth="400" WindowStartupLocation="CenterScreen">
+        Title="Окно администратора" MinHeight="570" MinWidth="1240" WindowStartupLocation="CenterScreen">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
