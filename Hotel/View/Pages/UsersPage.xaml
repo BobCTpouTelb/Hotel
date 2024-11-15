@@ -32,7 +32,7 @@
                 </ListView.View>
             </ListView>
 
-            <Grid Grid.Column="2" Margin="20">
+            <Grid Name="UserDetailsGrid" Grid.Column="2" Margin="20" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="10" />
@@ -63,15 +63,15 @@
                 <TextBlock Grid.Row="4" Text="Логин"/>
                 <TextBlock Grid.Row="6" Text="Пароль"/>
                 <TextBlock Grid.Row="8" Text="Дата регистрации"/>
-                <CheckBox Grid.Row="10" Grid.ColumnSpan="3" Content="Заблокирован"/>
-                <CheckBox Grid.Row="12" Grid.ColumnSpan="3" Content="Сменил пароль" IsHitTestVisible="False"/>
-                <TextBox Grid.Row="2" Grid.Column="2"/>
                 <!-- IsREadOnly - поле только для чтения (нельзя 
                 редактировать) -->
                 <!-- IsHitTestVisible - нельзя нажать на элемент -->
-                <TextBox Grid.Row="4" Grid.Column="2" IsReadOnly="True"/>
-                <PasswordBox Grid.Row="6" Grid.Column="2"/>
-                <DatePicker Grid.Row="8" Grid.Column="2" IsHitTestVisible="False"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Fullname}"/>
+                <TextBox Grid.Row="4" Grid.Column="2" IsReadOnly="True" Text="{Binding Login}"/>
+                <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Password}"/>
+                <DatePicker Grid.Row="8" Grid.Column="2" IsHitTestVisible="False" SelectedDate="{Binding RegistrationDate}"/>
+                <CheckBox Grid.Row="10" Grid.ColumnSpan="3" Content="Заблокирован" IsChecked="{Binding IsBlocked}"/>
+                <CheckBox Grid.Row="12" Grid.ColumnSpan="3" Content="Сменил пароль" IsHitTestVisible="False" IsChecked="{Binding IsActivated}"/>
                 <Button x:Name="SaveChangesBTN" Grid.Row="14" 
                         Grid.ColumnSpan="3" Content="Сохранить изменения" Click="SaveChangesBTN_Click"/>
             </Grid>
