@@ -1,5 +1,6 @@
 ﻿using Hotel.AppData;
 using Hotel.Model;
+using Hotel.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,8 @@ namespace Hotel.View.Pages
 
         private void addUserBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            AddUserWindow addUserWindow = new AddUserWindow();
+            addUserWindow.ShowDialog();
         }
 
         private void UsersLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
