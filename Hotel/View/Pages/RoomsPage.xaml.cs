@@ -24,5 +24,15 @@ namespace Hotel.View.Pages
         {
             InitializeComponent();
         }
+
+        private void BookingBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddClientBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
